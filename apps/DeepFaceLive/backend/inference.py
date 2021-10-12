@@ -323,7 +323,7 @@ class MyFaceMerger():
         self.cfg = cfg
         self.is_gpu = False
 
-        if device != 'CPU':
+        if not device.is_cpu():
             self.is_gpu = True
 
             global cp
@@ -420,7 +420,7 @@ class MyFaceMerger():
 
 
 
-def inference(img, device: str, onnx_device: ORTDeviceInfo):
+def inference(img, onnx_device: ORTDeviceInfo):
     '''
     Inference Pipeline
     '''
@@ -447,7 +447,7 @@ def inference(img, device: str, onnx_device: ORTDeviceInfo):
     img = frame_adjuster.run(frame_image=img)
 
     ## run face merger
-    face_merger = MyFaceMerger(cfg=config['FaceMerger'], device=device)
+    face_merger = MyFaceMerger(cfg=config['FaceMerger'], device=onnx_device)
     frame_finals = face_merger.run(filename, img, _face_mark_list, face_aligns, face_swaps, face_align_masks,
                                    face_swap_masks)
 
@@ -456,21 +456,26 @@ def inference(img, device: str, onnx_device: ORTDeviceInfo):
 
 if __name__ == '__main__':
     ## get onnx devices info
-    # devices = get_available_devices_info()
-    # print('devices: ', devices)
-    onnx_device = get_cpu_device()
-    device = "CPU"
+    devices = get_available_devices_info()
+    print('devices: ', devices)
 
+    USE_GPU = False
+    if USE_GPU:
+        # onnx_device = list(filter(lambda x: 'CUDA' in x.get_execution_provider(), devices))[0]
+        onnx_device = list(filter(lambda x: not x.is_cpu(), devices))[0]
+    else:
+        onnx_device = get_cpu_device()
+    print('device: ', onnx_device)
     ## read default config
     config = yaml.load(open('config.yml', 'rb'), Loader=yaml.Loader)
 
     ## read image
-    filepath = 'C:/Users/zhenyuanshen/Downloads/DeepFaceLive_DirectX12/userdata/samples/photos/000007.jpg'
+    filepath = 'F:/Projects/DeepFaceLive_NVIDIA/userdata/samples/photos/000007.jpg'
     filename = os.path.splitext(os.path.basename(filepath))[0]
     img = read_image(filepath)
 
     ## inference
-    res_img = inference(img, device, onnx_device)
+    res_img = inference(img, onnx_device)
     print('result: ', res_img.shape)
 
     ## visualize
