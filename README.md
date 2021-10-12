@@ -5,7 +5,7 @@
 ![](doc/deepfacelive_intro.png)
 
 ![](doc/logo_onnx.png)
-![](doc/logo_directx.png)
+![](doc/logo_nvidia.png)
 ![](doc/logo_python.png)
 
 </td></tr>
@@ -18,30 +18,27 @@
 
 </td></tr>
 
-<tr><td colspan=2 align="center">
-
-<table align="center" border="0">
 <tr><td align="center">
 Margot Robbie
 
 <img src="doc/celebs/Margot_Robbie/Margot_Robbie.png" width=128></img>
 
 <a href="doc/celebs/Margot_Robbie/examples.md">examples</a>
-</td><td align="center">
-Tom Cruise
+</td>
 
-<img src="doc/celebs/Tom_Cruise/Tom_Cruise.jpg" width=128></img>
+<td align="center">
+Rowan Atkinson 
 
-<a href="doc/celebs/Tom_Cruise/examples.md">examples</a>
-</td></tr>
-</table>
+<img src="doc/celebs/Rowan_Atkinson/Rowan_Atkinson.jpg" width=128></img>
+
+in training...
 
 </td></tr>
 
 <tr><td colspan=2 align="center">
 If you want a higher quality or better face match, you can train your own face model using <a href="https://github.com/iperov/DeepFaceLab">DeepFaceLab</a>
 
-Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782204300545">example</a> of Arnold Schwarzneggar trained on a particular face and used in a video call. Read the FAQ for more information.
+Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782204300545">example</a> of Arnold Schwarzneggar trained on a particular face and used in a video call.
 
 </td></tr>
 
@@ -52,7 +49,7 @@ Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782
 
 ## Minimum system requirements
 
-any DirectX12 compatible graphics card
+any DirectX12-compatible videocard or NVIDIA GTX 750+ 
 
 Modern CPU with AVX instructions
 
@@ -83,7 +80,9 @@ Windows 10
 </td></tr>
 <tr><td align="right"> <a href="https://mega.nz/folder/m10iELBK#Y0H6BflF9C4k_clYofC7yA">Windows 10 x64 (mega.nz)</a>
 </td><td align="center">
-DirectX12 build : NVIDIA, AMD, Intel videocards.
+NVIDIA build : NVIDIA cards only
+
+DirectX12 build : NVIDIA, AMD, Intel cards.
 </td></tr>
 <tr><td colspan=2 align="center">
 
@@ -138,5 +137,32 @@ bitcoin:bc1qewl062v70rszulml3f0mjdjrys8uxdydw3v6rq
 
 </table>
 
+## Inference Pipeline
+Setup config file and run the inference wrapper function:
 
+[config.yml](apps/DeepFaceLive/backend/config.yml)
+
+[inference.py](apps/DeepFaceLive/backend/inference.py)
+
+### Notes:
+
+For GPU Usage:
+- install `onnxruntime-gpu`, rather than `onnxruntime`
+```
+pip install onnxruntime-gpu
+```
+
+- install `cupy` for specific cuda version (10.2 for instance)
+```
+pip install cupy-cuda102
+```
+or 
+```
+pip install cupy_cuda102-9.5.0-cp38-cp38-win_amd64.whl
+```
+
+- install latest `opencv-contrib-python` if encountering error like "module 'cv2.cv2' has no attribute 'face'"
+```
+pip install opencv-contrib-python
+```
 
