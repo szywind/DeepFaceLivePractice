@@ -7,7 +7,7 @@ FaceDetector:
   temporal_smoothing: 1
 
 FaceMarker:
-  marker_type: 0
+  marker_type: 1
   marker_coverage: 1.1
   temporal_smoothing: 1
 
@@ -24,7 +24,7 @@ FaceAligner:
   y_offset: 0.0
 
 FaceSwapper:
-  dfs_model_path: C:/Users/zhenyuanshen/Downloads/DeepFaceLive_DirectX12/userdata/dfm_models/model_6000_SAEHD_model.dfm
+  dfs_model_path: F:/Projects/DeepFaceLive_NVIDIA/userdata/dfm_models/model_6000_SAEHD_model.dfm
 #  dfs_model_stem: model_6000_SAEHD_model
   face_id: 0
   presharpen_amount: 0.0
