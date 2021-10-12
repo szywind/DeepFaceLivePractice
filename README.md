@@ -5,7 +5,7 @@
 ![](doc/deepfacelive_intro.png)
 
 ![](doc/logo_onnx.png)
-![](doc/logo_nvidia.png)
+![](doc/logo_directx.png)
 ![](doc/logo_python.png)
 
 </td></tr>
@@ -18,27 +18,30 @@
 
 </td></tr>
 
+<tr><td colspan=2 align="center">
+
+<table align="center" border="0">
 <tr><td align="center">
 Margot Robbie
 
 <img src="doc/celebs/Margot_Robbie/Margot_Robbie.png" width=128></img>
 
 <a href="doc/celebs/Margot_Robbie/examples.md">examples</a>
-</td>
+</td><td align="center">
+Tom Cruise
 
-<td align="center">
-Rowan Atkinson 
+<img src="doc/celebs/Tom_Cruise/Tom_Cruise.jpg" width=128></img>
 
-<img src="doc/celebs/Rowan_Atkinson/Rowan_Atkinson.jpg" width=128></img>
-
-in training...
+<a href="doc/celebs/Tom_Cruise/examples.md">examples</a>
+</td></tr>
+</table>
 
 </td></tr>
 
 <tr><td colspan=2 align="center">
 If you want a higher quality or better face match, you can train your own face model using <a href="https://github.com/iperov/DeepFaceLab">DeepFaceLab</a>
 
-Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782204300545">example</a> of Arnold Schwarzneggar trained on a particular face and used in a video call.
+Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782204300545">example</a> of Arnold Schwarzneggar trained on a particular face and used in a video call. Read the FAQ for more information.
 
 </td></tr>
 
@@ -49,7 +52,7 @@ Here is an <a href="https://www.tiktok.com/@arnoldschwarzneggar/video/6995538782
 
 ## Minimum system requirements
 
-any DirectX12-compatible videocard or NVIDIA GTX 750+ 
+any DirectX12 compatible graphics card
 
 Modern CPU with AVX instructions
 
@@ -80,9 +83,7 @@ Windows 10
 </td></tr>
 <tr><td align="right"> <a href="https://mega.nz/folder/m10iELBK#Y0H6BflF9C4k_clYofC7yA">Windows 10 x64 (mega.nz)</a>
 </td><td align="center">
-NVIDIA build : NVIDIA cards only
-
-DirectX12 build : NVIDIA, AMD, Intel cards.
+DirectX12 build : NVIDIA, AMD, Intel videocards.
 </td></tr>
 <tr><td colspan=2 align="center">
 
@@ -136,6 +137,8 @@ bitcoin:bc1qewl062v70rszulml3f0mjdjrys8uxdydw3v6rq
 -->
 
 </table>
+
+
 
 ## Inference Pipeline
 Setup config file and run the inference wrapper function:
